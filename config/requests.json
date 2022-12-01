@@ -1,0 +1,26 @@
+{
+    "sendEmail":{
+        "schema":{
+            "method":"POST",
+            "protocol":"https",
+            "host":"<%= iparam.domain %>",
+            "path":"<%= context.path %>",
+            "headers": {
+              "Authorization" : "<%= encode(iparam.apikey) %>:x",
+              "Content-Type": "application/json"
+            }
+        }
+    },
+    "getTicketDetails":{
+        "schema":{
+            "method":"GET",
+            "protocol":"https",
+            "host":"<%= iparam.domain %>",
+            "path":"<%= context.path %>",
+            "headers": {
+              "Authorization" : "<%= encode(iparam.apikey) %>:x",
+              "Content-Type": "application/json"
+            }
+        }
+    }
+}

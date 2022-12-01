@@ -1,0 +1,18 @@
+{
+  "apikey": {
+    "display_name": "apikey",
+    "description": "Please enter your apikey",
+    "type": "api_key",
+    "required": true,
+    "type_attributes": {
+      "product": "freshdesk"
+    },
+    "secure": true
+  },
+  "domain": {
+    "display_name": "domain",
+    "description": "Please enter your complete domain",
+    "type": "text",
+    "required": true
+  }
+}

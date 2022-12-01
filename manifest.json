@@ -1,0 +1,31 @@
+{
+  "platform-version": "2.3",
+  "product": {
+    "freshdesk": {
+      "location": {
+        "ticket_sidebar": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        }
+      },
+      "requests": {
+        "sendEmail": {}
+      },
+      "events": {
+        "onConversationCreate": {
+          "handler": "onConversationHandler"
+        },
+        "onConversationUpdate": {
+          "handler": "onConversationHandler"
+        }
+      },
+      "dependencies": {
+        "natural": "5.2.3"
+      }
+    }
+  },
+  "engines": {
+    "node": "14.21.1",
+    "fdk": "9.0.0"
+  }
+}
