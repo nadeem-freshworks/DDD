@@ -1,65 +1,52 @@
 // const axios = require('axios');
-const natural = require('natural');
-const classifier = new natural.BayesClassifier();
-const { regularDocuments, statusDocuments} = require('./trainigData/testData')
+const utils = require('./lib/utils');
+
+
+// const natural = require('natural');
+// const classifier = new natural.BayesClassifier();
+// const { regularDocuments, statusDocuments} = require('./trainigData/testData')
 
 
 exports = {
-  onConversationHandler: function (args) {
-    const data = args['data'];
-    // console.log('convesation'+ data.conversation.body_text);
-    // console.log( 'actor'+JSON.stringify(data.actor));
+  onConversationCreateHandler: async function (args) {
+    console.log("on conversatoion Create handler")
 
-    const ticketId =  data.conversation.ticket_id;
+    await onConversationHandler(args)
+  },
+  onConversationUpdateHandler: async function (args) {
+    console.log("on conversatoion Update handler")
 
-    if (shouldWeSendMail) {
-      console.log("trigger a email ")
-      makeCall(ticketId)
-    }
+    await onConversationHandler(args)
+
+  }
+};
+
+async function onConversationHandler(args){
+  console.log("on conversatoion handler start")
+
+  const data = args['data'];
+  
+
+  if (shouldWeSendMail(data)) {
+    console.log("trigger a email ")
+    await sendAutomatedEmail(data)
   }
 
-};
-function shouldWeSendMail(){
-  if(data.actor.helpdesk_agent)
+  console.log("on conversatoion handler end")
+}
+
+function shouldWeSendMail(data) {
+  if (data.actor.type === 'agent' || data.actor.org_agent_id !==null || data.actor.helpdesk_agent  )
     return false;
   
+
+  return true;
 }
 
 
-async function makeCall(ticketId) {
-  const data = {
-    body: "We are working on this issue. Will keep you posted.1234"
-  }
-  const options ={
-    context: {
-      path: `/api/v2/tickets/${ticketId}/reply`
-    },
-    body :JSON.stringify(data)
-  }
-  $request.invokeTemplate("sendEmail", options)
-    .then(
-      function(data) {
-        console.log(data);
-      },
-      function(error) {
-        console.log(error);
-      }
-    );
-  
-  // smart();
+async function sendAutomatedEmail(data) {
+  utils.logEmails(data);
+  await utils.sendEmail(data);
 
 }
-// function smart(){
 
-
-// classifier.addDocuments(regularDocuments, `regular`)
-// classifier.addDocuments(statusDocuments, `status`)
-// classifier.train()
- 
-// console.log(classifier.classify(`I heard the mexican restaurant is great!`)) // "positive"
-// console.log(classifier.classify(`I don't want to eat there again.`)) // "negative"
-// console.log(classifier.classify(`The torta is epicly bad.`)) // "negative"
-// console.log(classifier.classify(`The torta is tasty.`)) // "positive"
- 
-// console.log(classifier.getClassifications(`Burritos are the meaning of life.`))
-// }

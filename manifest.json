@@ -9,14 +9,15 @@
         }
       },
       "requests": {
-        "sendEmail": {}
+        "sendEmail": {},
+        "getTicketDetails": {}
       },
       "events": {
         "onConversationCreate": {
-          "handler": "onConversationHandler"
+          "handler": "onConversationCreateHandler"
         },
         "onConversationUpdate": {
-          "handler": "onConversationHandler"
+          "handler": "onConversationUpdateHandler"
         }
       },
       "dependencies": {

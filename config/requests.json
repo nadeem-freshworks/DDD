@@ -6,7 +6,7 @@
             "host":"<%= iparam.domain %>",
             "path":"<%= context.path %>",
             "headers": {
-              "Authorization" : "<%= encode(iparam.apikey) %>:x",
+              "Authorization" : "Basic <%= encode(iparam.apikey) %>:x",
               "Content-Type": "application/json"
             }
         }
@@ -18,7 +18,7 @@
             "host":"<%= iparam.domain %>",
             "path":"<%= context.path %>",
             "headers": {
-              "Authorization" : "<%= encode(iparam.apikey) %>:x",
+              "Authorization" : " Basic <%= encode(iparam.apikey) %>:x",
               "Content-Type": "application/json"
             }
         }

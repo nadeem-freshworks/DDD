@@ -12,7 +12,7 @@ var regularDocuments = [
   `I'd rather die than eat those nasty enchiladas.`
 ]
 
-module.exports = {
+exports  = {
   regularDocuments,
   statusDocuments
 }

@@ -16,3 +16,19 @@ async function renderText() {
 
   textElement.innerHTML = `Ticket is created by ${name}`;
 }
+
+
+async function sendEmail(){
+ 
+  const bodydata = {
+    body: "email from fronetend"
+  }
+  const options = {
+    context: {
+      path: `/api/v2/tickets/5/reply`
+    },
+    body: JSON.stringify(bodydata)
+  }
+  await client.request.invokeTemplate("sendEmail", options)
+  console.log("Automated reply has been sent");
+}
