@@ -23,7 +23,7 @@ function getEmailBody(ticketDetails) {
   let body = CONSTANTS.statusMessage;
 
   const custom_fields = ticketDetails.custom_fields || {};
-  const overAllstatus = CONSTANTS.overAllStatus[custom_fields.status || 0];
+  const overAllstatus = CONSTANTS.overAllStatus[ticketDetails.status || 0];
   const codeReviewStatus = custom_fields.cf_code_review_status || 'Not Started';
   const qaReviewStatus = custom_fields.cf_qa_review_status || 'Not Started';
   const contentReviewStatus = custom_fields.cf_content_review_status || 'Not Started';
