@@ -3,16 +3,20 @@ function isArray(data) {
   return Array.isArray(data) && data.length;
 }
 
-function getCCEmails( cc_emails, from_email) {
-  cc_emails = isArray(cc_emails) ? cc_emails : [cc_emails];
+function getCCEmails(data) {
+  let cc_emails = data.conversation.cc_emails;
+  let to_emails = data.conversation.to_emails;
 
-  cc_emails = CONSTANTS.cc_emails.concat(...cc_emails, from_email);
-  cc_emails = ["bhatindm@gmail.com"]
+  cc_emails = isArray(cc_emails) ? cc_emails : [cc_emails];
+  to_emails = isArray(to_emails) ? to_emails : [to_emails];
+
+  cc_emails = CONSTANTS.cc_emails.concat(...cc_emails, ...to_emails);
+  return cc_emails;
 }
 function logEmails(data) {
   console.log("emails which might be helpful ")
-  console.log("to_emails", data.conversation.to_emails ,"cc_emails", data.conversation.cc_emails ,"from_emails", data.conversation.from_email,"support_emaisl", data.conversation.support_email )
-  
+  console.log("to_emails", data.conversation.to_emails, "cc_emails", data.conversation.cc_emails, "from_emails", data.conversation.from_email, "support_emaisl", data.conversation.support_email)
+
 }
 
 function getEmailBody(ticketDetails) {
@@ -50,11 +54,12 @@ async function getTicketDetails(ticketId) {
 }
 
 async function sendEmail(data) {
-
+  const cc_emails = getCCEmails(data)
   const ticketId = data.conversation.ticket_id;
   const ticketDetails = await getTicketDetails(ticketId);
   const bodydata = {
-    body: getEmailBody(ticketDetails)
+    body: getEmailBody(ticketDetails),
+    cc_emails
   }
   const options = {
     context: {

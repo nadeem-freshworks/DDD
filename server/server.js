@@ -45,7 +45,6 @@ function shouldWeSendMail(data) {
 
 
 async function sendAutomatedEmail(data) {
-  utils.logEmails(data);
   await utils.sendEmail(data);
 
 }
