@@ -19,11 +19,11 @@
         "onConversationUpdate": {
           "handler": "onConversationUpdateHandler"
         }
-      },
-      "dependencies": {
-        "natural": "5.2.3"
       }
     }
+  },
+  "dependencies": {
+    "natural": "5.2.3"
   },
   "engines": {
     "node": "14.21.1",
