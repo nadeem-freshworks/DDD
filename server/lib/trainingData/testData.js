@@ -13,7 +13,7 @@ let statusDocuments = [
 ]
  
 let regularDocuments = [
-  `Any update on the same`,`Thanks in advance`,`regards`,`Thank you for reaching out`,
+ `Thanks for your response`,`Thanks for update`, `Any update on the same`,`Thanks in advance`,`regards`,`Thank you for reaching out`,
   `Best regards`,`I hope this email finds you well`, `Thank you for your response`,
 ]
 
