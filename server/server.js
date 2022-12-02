@@ -1,10 +1,6 @@
-// const axios = require('axios');
+
 const utils = require('./lib/utils');
-
-
-// const natural = require('natural');
-// const classifier = new natural.BayesClassifier();
-// const { regularDocuments, statusDocuments} = require('./trainigData/testData')
+const classifier = require('./lib/classifier');
 
 
 exports = {
@@ -38,9 +34,10 @@ async function onConversationHandler(args){
 function shouldWeSendMail(data) {
   if (data.actor.type === 'agent' || data.actor.org_agent_id !==null || data.actor.helpdesk_agent  )
     return false;
-  
 
-  return true;
+  const body_text = data.conversation.body_text;
+  return classifier.getClassification(body_text)
+  
 }
 
 
