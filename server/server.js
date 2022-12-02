@@ -36,7 +36,9 @@ function shouldWeSendMail(data) {
     return false;
 
   const body_text = data.conversation.body_text;
-  return classifier.getClassification(body_text)
+  if(getClassification(body_text)=='status'){
+    return true;
+  }
   
 }
 
