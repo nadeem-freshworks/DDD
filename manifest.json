@@ -2,12 +2,6 @@
   "platform-version": "2.3",
   "product": {
     "freshdesk": {
-      "location": {
-        "ticket_sidebar": {
-          "url": "index.html",
-          "icon": "styles/images/icon.svg"
-        }
-      },
       "requests": {
         "sendEmail": {},
         "getTicketDetails": {}
@@ -23,7 +17,8 @@
     }
   },
   "dependencies": {
-    "natural": "5.2.3"
+    "natural": "5.2.3",
+    "keyword-extractor": "0.0.23"
   },
   "engines": {
     "node": "14.21.1",

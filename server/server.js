@@ -36,7 +36,8 @@ function shouldWeSendMail(data) {
     return false;
 
   const body_text = data.conversation.body_text;
-  if(getClassification(body_text)=='status'){
+  console.log(body_text);
+  if(classifier.getClassification(body_text)=='status'){
     return true;
   }
   
