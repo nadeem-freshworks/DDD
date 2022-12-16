@@ -1,8 +1,5 @@
 // const cc_emails = ['siva.venkatachalam@freshworks.com', 'nirmal.kumar@freshworks.com'];
 const cc_emails = [];
-const statusMessage = `Thanks so much for reaching out! This auto-reply is just to let you know.<br> 
-                       We received your email and will get back to you with a (human) response as soon as possible.<br>
-                       Current status of the app is mentioned below.<br><br>`
 
 const statusExternalTextToId = {
   "Under Review": 0,
@@ -20,7 +17,7 @@ const statusIdToExternalText = {
 }
 
 const overAllStatus = {
-  0:'Not Started',
+  0:'Yet to start',
   2: 'Open',
   3: 'Pending',
   4: 'Resolved',
@@ -35,7 +32,6 @@ const overAllStatus = {
 }
 exports = {
   cc_emails,
-  statusMessage,
   overAllStatus,
   statusIdToExternalText,
   statusExternalTextToId

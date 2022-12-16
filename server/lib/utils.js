@@ -20,26 +20,24 @@ function logEmails(data) {
 }
 
 function getEmailBody(ticketDetails) {
-  let body = CONSTANTS.statusMessage;
-
+  let body  = `This is an auto generate email<br>
+  Thanks for reaching out to us over email, while we are working on resolving and an agent respond back to you; here is the current status of the app -<br><br>`
+  
+  console.log(ticketDetails.id)
   const custom_fields = ticketDetails.custom_fields || {};
   const overAllstatus = CONSTANTS.overAllStatus[ticketDetails.status || 0];
-  const codeReviewStatus = custom_fields.cf_code_review_status || 'Not Started';
-  const qaReviewStatus = custom_fields.cf_qa_review_status || 'Not Started';
-  const contentReviewStatus = custom_fields.cf_content_review_status || 'Not Started';
-  const securityReviewStatus = custom_fields.cf_security_review_status || 'Not Started';
+  const codeReviewStatus = custom_fields.cf_code_review_status || 'Yet to start';
+  const qaReviewStatus = custom_fields.cf_qa_review_status || 'Yet to start';
+  const contentReviewStatus = custom_fields.cf_content_review_status || 'Yet to start';
+  const securityReviewStatus = custom_fields.cf_security_review_status || 'Yet to start';
+ const status= `Overall Status : ${overAllstatus }<br>
+  Code Review Status : ${codeReviewStatus}<br>
+  Content Review Status : ${ contentReviewStatus}<br>
+  QA Review Status : ${qaReviewStatus}<br>
+  Security Review Status : ${securityReviewStatus}`
+  
 
-  body = body + `<table style="border: 1px solid black;width:40% "> <tr style="text-align:left"> <th style="width:80%">Category</th> <th>Status</th> </tr>`
-
-  body = body + `<tr><td>Overall Status</td><td> ${overAllstatus}</td></tr>`
-  body = body + `<tr><td>Code Review Status</td><td> ${codeReviewStatus}</td></tr>`
-  body = body + `<tr><td>Content Review Status</td><td> ${contentReviewStatus}</td></tr>`
-  body = body + `<tr><td>QA Review Status</td><td> ${qaReviewStatus}</td></tr>`
-  body = body + `<tr><td>Security Review Status</td><td> ${securityReviewStatus}</td></tr></table><br>`
-  body = body + `Thank you for your patience.<br><br>`
-
-
-  return body;
+  return body+status;
 }
 async function getTicketDetails(ticketId) {
 
