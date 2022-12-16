@@ -30,11 +30,11 @@ function getEmailBody(ticketDetails) {
   const qaReviewStatus = custom_fields.cf_qa_review_status || 'Yet to start';
   const contentReviewStatus = custom_fields.cf_content_review_status || 'Yet to start';
   const securityReviewStatus = custom_fields.cf_security_review_status || 'Yet to start';
- const status= `Overall Status : ${overAllstatus }<br>
-  Code Review Status : ${codeReviewStatus}<br>
-  Content Review Status : ${ contentReviewStatus}<br>
-  QA Review Status : ${qaReviewStatus}<br>
-  Security Review Status : ${securityReviewStatus}`
+ const status= `Overall Status - ${overAllstatus }<br>
+  Code Review Status - ${codeReviewStatus}<br>
+  Content Review Status - ${ contentReviewStatus}<br>
+  QA Review Status - ${qaReviewStatus}<br>
+  Security Review Status - ${securityReviewStatus}`
   
 
   return body+status;
