@@ -20,7 +20,7 @@ function logEmails(data) {
 }
 
 function getEmailBody(ticketDetails) {
-  let body  = `This is an auto generate email<br>
+  let body  = `<p>This is an auto generate email<br>
   Thanks for reaching out to us over email, while we are working on resolving and an agent respond back to you; here is the current status of the app -<br><br>`
   
   console.log(ticketDetails.id)
@@ -34,7 +34,7 @@ function getEmailBody(ticketDetails) {
   Code Review Status - ${codeReviewStatus}<br>
   Content Review Status - ${ contentReviewStatus}<br>
   QA Review Status - ${qaReviewStatus}<br>
-  Security Review Status - ${securityReviewStatus}`
+  Security Review Status - ${securityReviewStatus}<p>`
   
 
   return body+status;
